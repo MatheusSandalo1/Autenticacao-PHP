@@ -1,3 +1,24 @@
+<?php
+    session_start();
+
+    // echo "<pre>";
+    // print_r($_SESSION);
+    // echo "</pre>";
+
+    if(isset($_GET['logout'])){
+        session_destroy();
+        header('Location: index.php');
+        exit;
+    }
+
+    if(!isset($_SESSION['logado'])){  // ! inverte a informação --- se nao existir 
+        header('Location: index.php');
+        exit;
+    };
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,6 +36,7 @@
                 <div class="col-12">
                     <h1>Área Administrativa</h1>
                     <p>Olá, hoje é dia 01/11/2022</p>
+                    <p><a href="admin.php?logout" class="btn btn-primary">Sair</a></p>
                 </div>
             </div>
         </div>
